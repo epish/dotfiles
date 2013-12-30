@@ -1,9 +1,18 @@
 # common aliases
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+
+alias ls='ls --color=always'
+alias ll='ls -lF'
+alias la='ls -A'
+alias l='ls -CF'
 
 alias clear='echo -e "\e[2J"'
-alias ls='ls --color=always'
-alias lf='ls -Arthop'
-alias l='lf'
 alias nl="nl -ba"
 
 alias p='pushd'
