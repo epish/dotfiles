@@ -7,7 +7,7 @@ set incsearch
 set wildmenu
 syntax enable
 set synmaxcol=0
-set term=screen-256color
+"set term=xterm
 set display=uhex
 set shortmess=aAIsT
 set cmdheight=2
@@ -61,5 +61,5 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')

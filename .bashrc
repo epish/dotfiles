@@ -3,7 +3,7 @@ export EDITOR="vim"
 set -o vi
 
 # remaps Caps_Lock key to a second Escape
-xmodmap -e "keysym Caps_Lock = Escape"
+#xmodmap -e "keysym Caps_Lock = Escape"
 
 # If not running interactively, don't do anything
 case $- in
@@ -61,7 +61,6 @@ COL_hist='\[\e[0;93m\]'
 delim1='\342\224\200'
 
 PS1="${COL_delim}\342\224\214$delim1\$([[ \$? != 0 ]] && echo \"[${COL_warn}\342\234\227${COL_delim}]$delim1\")[$(if [[ ${EUID} == 0 ]]; then echo '${COL_warn}\h'; else echo "${COL_user}\u${COL_delim}@$COL_host\h"; fi)${COL_delim}]$delim1[${COL_pwd}\w${COL_delim}]\n${COL_delim}\342\224\224$delim1$delim1${COL_hist}[\!]${COL_delim}\342\225\274 ${base_color}"
-
 
 
 

@@ -1,7 +1,8 @@
 " Color Settings
-"color wombat256
+color wombat
 "color xterm16
-"color railscasts
 "color molokai
 "color skittles_dark
-color skittles_berry
+"color skittles_berry
+"color jellybeans
+"color zenburn
