@@ -12,6 +12,10 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
+"NERDTree toggle
+nmap <leader>N :NERDTreeToggle<CR>
+nmap <Tab> <C-W>l
+nmap <S-Tab> <C-W>h
 
 "============== Custom Mappings ===============
 " general mapping
@@ -74,6 +78,17 @@ imap '' ''<ESC>i
 imap "" ""<ESC>i
 imap () ()<ESC>i
 imap [] []<ESC>i
+imap {} {}<ESC>i
+imap <> <><ESC>i
 
-"to insert comment at BOL
-nmap <leader>" ^i"<ESC>
+
+"============== Filetype based commenting ===============
+"" perl style # commenting
+autocmd FileType sh,php,yaml  noremap <F5> :s/\v^(\s*)/\1#/ <CR>
+autocmd FileType sh,php,yaml  noremap <F6> :s/\v^(\s*)#/\1/ <CR>
+" C style // commenting
+autocmd FileType c,cpp,php noremap <F5> :s+\v^(\s*)+\1//+ <CR>
+autocmd FileType c,cpp,php noremap <F6> :s+\v^(\s*)//+\1+ <CR>
+" vim commenting
+autocmd FileType vim noremap <F5> :s/\v^(\s*)/\1"/ <CR>
+autocmd FileType vim noremap <F6> :s/\v^(\s*)"/\1/ <CR>

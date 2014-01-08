@@ -1,7 +1,7 @@
 "============== General Settings ===============
+set showcmd
 set dict=/usr/share/dict/words
 set cursorline
-set showcmd
 set ruler
 set incsearch
 set wildmenu

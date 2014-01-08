@@ -58,12 +58,16 @@ COL_warn='\[\e[0;31m\]'
 COL_host='\[\e[0;96m\]'
 COL_pwd='\[\e[0;32m\]'
 COL_hist='\[\e[0;93m\]'
+COL_repo='\[\e[0;34m\]'
 delim1='\342\224\200'
 
-PS1="${COL_delim}\342\224\214$delim1\$([[ \$? != 0 ]] && echo \"[${COL_warn}\342\234\227${COL_delim}]$delim1\")[$(if [[ ${EUID} == 0 ]]; then echo '${COL_warn}\h'; else echo "${COL_user}\u${COL_delim}@$COL_host\h"; fi)${COL_delim}]$delim1[${COL_pwd}\w${COL_delim}]\n${COL_delim}\342\224\224$delim1$delim1${COL_hist}[\!]${COL_delim}\342\225\274 ${base_color}"
+export PS0="${COL_delim}\342\224\214$delim1\$([[ \$? != 0 ]] && echo \"[${COL_warn}\342\234\227${COL_delim}]$delim1\")[$(if [[ ${EUID} == 0 ]]; then echo '${COL_warn}\h'; else echo "${COL_user}\u${COL_delim}@$COL_host\h"; fi)${COL_delim}]$delim1[${COL_pwd}\w${COL_delim}]%{$delim1($COL_repo%b%c%u%f%t$base_color)%}\n${COL_delim}\342\224\224$delim1$delim1${COL_hist}[\!]${COL_delim}\342\225\274 ${base_color}"
+
+export PROMPT_COMMAND='export PS1=$(gitprompt.pl c=%[%e[38\;5\;10m\(2commit\) u=%[%e[33m\(u=touched\) f=%[%e[38\;5\;15m\(f=untracked\) statuscount=1)'
 
 
-
+#export PS0='\[[38;5;202m\]\u\[[37m\] in \[[38;5;107m\]\w\[[37m\] on \[[38;5;1m\]\h\[[37m\]%{ at \[\e[38;5;25m\]%b%c%u%f%t\[\e[0m\]%} - '
+#export PROMPT_COMMAND='export PS1=$(gitprompt.pl c=%[%e[38\;5\;10m u=%[%e[33m f=%[%e[38\;5\;15m statuscount=1)'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

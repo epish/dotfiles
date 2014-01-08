@@ -15,8 +15,7 @@ vbell on
 vbell_msg "bell on %t (%n)"
 
 # look and feel
-caption always "%{= bb}%{+b w}%n %t %h %=%l %H %c"
-hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+hardstatus alwayslastline "%{=b cW} %H %{= kK} %= %?%-Lw%?%{= kw}%n%{= R}*%{-}%f %t%>%{= kK}%?%?%?%+Lw%?%?%>%= %{= cW} %m/%d %{= Ck} %c %{w}%{w}"
 
 activity "Activity in %t(%n)"
 
