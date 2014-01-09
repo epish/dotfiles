@@ -40,3 +40,9 @@
 [submodule ".vim/bundle/skittles_berry.git"]
 	path = .vim/bundle/skittles_berry.git
 	url = git://github.com/shawncplus/skittles_berry.git
+[submodule ".vim/bundle/MatchTag"]
+	path = .vim/bundle/MatchTag
+	url = https://github.com/gregsexton/MatchTag
+[submodule ".vim/bundle/snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
+	url = https://github.com/msanders/snipmate.vim
