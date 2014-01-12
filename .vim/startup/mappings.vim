@@ -92,3 +92,4 @@ autocmd FileType c,cpp,php noremap <F6> :s+\v^(\s*)//+\1+ <CR>
 " vim commenting
 autocmd FileType vim noremap <F5> :s/\v^(\s*)/\1"/ <CR>
 autocmd FileType vim noremap <F6> :s/\v^(\s*)"/\1/ <CR>
+"test mapping for git merging
