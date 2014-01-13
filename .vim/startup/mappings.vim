@@ -12,6 +12,7 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
+no Q <Nop>
 "NERDTree toggle
 nmap <leader>N :NERDTreeToggle<CR>
 nmap <Tab> <C-W>l
@@ -52,13 +53,17 @@ nmap <Leader>h :tabnew %:h<CR>
 "nmap gv guiW
 
 " diff
-"nmap ]c ]czz
-"nmap [c [czz
+nmap ]c ]czz
+nmap [c [czz
 
+"copy all to X-buffer
+nmap ya gg"+yG
+
+nmap yc "+yy
+" gO to create a new line below cursor in normal mode
 " default to very magic
 "no / /\v
 
-" gO to create a new line below cursor in normal mode
 nmap g<C-O> o<ESC>k
 " g<Ctrl+o> to create a new line above cursor (Ctrl to prevent collision with 'go' command)
 nmap gO O<ESC>j

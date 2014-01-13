@@ -36,6 +36,7 @@ set cc=+1,+2
 set linespace=0
 set history=1000
 set list listchars=tab:› ,trail:-,extends:>,precedes:<,eol:¬
+set colorcolumn=80
 
 set laststatus=2
 set ffs=unix

@@ -3,6 +3,7 @@ export EDITOR="vim"
 set -o vi
 
 # remaps Caps_Lock key to a second Escape
+#xmodmap -e "remove lock = Caps_Lock"
 #xmodmap -e "keysym Caps_Lock = Escape"
 
 # If not running interactively, don't do anything
