@@ -3,7 +3,7 @@ echo "Old .dotfiles moved to .file.old";
 
 INSTALLDIR=${1:-$HOME}
 
-for i in .bash  .bash_logout  .bashrc  bin  completion .tmux.conf .tmux-powerlinerc .screenrc .inputrc
+for i in .bash  .bash_logout  .bashrc  bin  completion .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config
 do
 	mv $INSTALLDIR/$i $INSTALLDIR/$i.old 2> /dev/null
 	ln -s $PWD/$i $INSTALLDIR/$i;
