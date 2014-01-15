@@ -1,4 +1,3 @@
-" Unmap the arrow keys
 no <down> ddp
 no <left> <Nop>
 no <right> <Nop>
@@ -85,6 +84,7 @@ imap () ()<ESC>i
 imap [] []<ESC>i
 imap {} {}<ESC>i
 imap <> <><ESC>i
+imap <Leader>; <ESC>$a;<CR>
 
 
 "============== Filetype based commenting ===============
