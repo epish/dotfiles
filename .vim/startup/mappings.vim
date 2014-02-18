@@ -32,17 +32,21 @@ nmap <Leader>h :tabnew %:h<CR>
 "nmap da, f,ld2F,i,<ESC>l "delete argument 
 "nmap ca, f,ld2F,i,<ESC>a "delete arg and insert
 
-" delete surrounding characters
-"noremap ds{ F{xf}x
-"noremap cs{ F{xf}xi
-"noremap ds" F"x,x
-"noremap cs" F"x,xi
-"noremap ds' F'x,x
-"noremap cs' F'x,xi
-"noremap ds( F(xf)x
-"noremap cs( F(xf)xi
-"noremap ds) F(xf)x
-"noremap cs) F(xf)xi
+" delete/insert surrounding characters
+noremap ds{ F{xf}x
+noremap cs{ F{xf}xi
+noremap is{ Bi{<Esc>ea}<Esc>
+noremap ds" F"x,x
+noremap cs" F"x,xi
+noremap is" Bi"<Esc>ea"<Esc>
+noremap ds' F'x,x
+noremap cs' F'x,xi
+noremap is' Bi'<Esc>ea'<Esc>
+noremap ds( F(xf)x
+noremap cs( F(xf)xi
+noremap ds) F(xf)x
+noremap cs) F(xf)xi
+noremap is( Bi(<Esc>ea)<Esc>
 
 "nmap cu ct_
 "nmap cU cf_
@@ -78,23 +82,26 @@ nmap { {zz
 "map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 "quick pairs
-imap '' ''<ESC>i
-imap "" ""<ESC>i
-imap () ()<ESC>i
-imap [] []<ESC>i
-imap {} {}<ESC>i
-imap <> <><ESC>i
+imap <Leader>' ''<ESC>i
+imap <Leader>" ""<ESC>i
+imap <Leader>) ()<ESC>i
+imap <Leader>] []<ESC>i
+imap <Leader>} {}<ESC>i
+
+imap <Leader>> <><ESC>i
 imap <Leader>; <ESC>$a;<CR>
 
 
+"============== Filetype based executuion ===============
+"python script execution
+autocmd FileType python  nnoremap <Leader>r :exec '!python %'<CR>
 "============== Filetype based commenting ===============
 "" perl style # commenting
-autocmd FileType sh,php,yaml  noremap <F5> :s/\v^(\s*)/\1#/ <CR>
-autocmd FileType sh,php,yaml  noremap <F6> :s/\v^(\s*)#/\1/ <CR>
+autocmd FileType python,sh,php,yaml  noremap <Leader>c :s/\v^(\s*)/\1#/ <CR>
+autocmd FileType python,sh,php,yaml  noremap <Leader>c :s/\v^(\s*)#/\1/ <CR>
 " C style // commenting
 autocmd FileType c,cpp,php noremap <F5> :s+\v^(\s*)+\1//+ <CR>
 autocmd FileType c,cpp,php noremap <F6> :s+\v^(\s*)//+\1+ <CR>
 " vim commenting
 autocmd FileType vim noremap <F5> :s/\v^(\s*)/\1"/ <CR>
 autocmd FileType vim noremap <F6> :s/\v^(\s*)"/\1/ <CR>
-"test mapping for git merging

@@ -21,6 +21,13 @@ function mkcd()
 	'cd' ${@: -1}
 }
 
+function rename_all()
+{
+    regex=$1
+    replace=$2
+    find . -name "*$regex*" | sed -e "p;s/$regex/$replace/" | xargs -n2 mv
+}
+
 colors() {
 	local fgc bgc vals seq0
 
