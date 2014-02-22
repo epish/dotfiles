@@ -1,4 +1,4 @@
-"============== General Settings ===============
+"============== general settings ===============
 set showcmd
 set dict=/usr/share/dict/words
 set cursorline
@@ -27,9 +27,13 @@ set nocompatible
 set enc=utf-8
 set fillchars=vert:¦
 
-set noexpandtab
-set tabstop=4
-set shiftwidth=4
+set textwidth=79  " lines longer than 79 columns will be broken
+set expandtab     " insert spaces when hitting TABs
+set tabstop=4     " an hard TAB displays as 4 columns
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set shiftround    " round indent to multiple of 'shiftwidth'
+set autoindent    " align the new line indent with the previous line
 set foldcolumn=1
 set cc=+1,+2
 
