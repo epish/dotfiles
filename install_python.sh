@@ -43,3 +43,9 @@ install_deb_package pip python-pip
 #nose
 #https://nose.readthedocs.org/en/latest/
 install_pip_package nosetests nose
+
+#create skeleton structur for python projects
+cd ~
+mkdir -p python/projects/skeleton 
+cd python/projects/skeleton 
+mkdir bin tests docs templates NAME
