@@ -15,8 +15,8 @@ install_deb_package() {
     distr="$1"
     if ! hash $distr 2>/dev/null; then
         repo="$2"
-        echo "Installing $name with apt-get"
-        sudo apt-get isntall -y $name
+        echo "Installing $repo with apt-get"
+        sudo apt-get install -y $repo
     else
         echo "$distr is already installed"
     fi
