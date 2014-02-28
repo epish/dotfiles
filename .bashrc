@@ -95,3 +95,6 @@ function calc
   echo "${1}" | bc -l;
 }
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
