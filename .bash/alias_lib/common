@@ -29,7 +29,7 @@ alias follow=". ~/bin/follow"
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
 alias lsof_ports='lsof -Pnl +M -i4'
-alias psmem='ps -eo pmem,pcpu,rss,vsize,args | sort -k 1 -r | head'
+alias psmem='ps -eo pmem,pcpu,rss,vsize,args --sort -rss,-vsize | head'
 
 alias android-connect="mtpfs -o allow_other /media/Nexus"
 alias android-disconnect="fusermount -u /media/Nexus"

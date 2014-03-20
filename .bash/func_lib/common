@@ -54,4 +54,24 @@ colors() {
 		echo; echo
 	done
 }
+#
+function human() {
+    arg_array=$( printf "%s," "$@" )
+    awk -v h_args="$arg_array" '
+            BEGIN { 
+                split(h_args,h_array,",")
+                for (i = 1; i in h_array; i++){
+                    HR[h_array[i]]=1;
+                }
+            }
+            {
+            for ( x=1 ; x<=NF ; x++ ){ 
+                if (NR!=1 && HR[x]==1) {
+                    printf ("%-4.2f %s ", $x/1024, "MB");
+                } else {
+                    printf ("%-9s ",$x) };
+                }
+            print ("") 
+    }'
+}
 # vim: set syn=sh :
