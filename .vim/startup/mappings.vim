@@ -61,12 +61,19 @@ nmap [c [czz
 
 "copy all to X-buffer
 nmap ya gg"+yG
-
+"copy string to X-buffer
 nmap yc "+yy
-" gO to create a new line below cursor in normal mode
+" Copy current buffer path relative to root of VIM session to system clipboard
+nnoremap <Leader>yp :let @+=expand("%")<cr>:echo "Copied file path to clipboard"<cr>
+" Copy current filename to system clipboard
+nnoremap <Leader>yf :let @+=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>
+" Copy current buffer path without filename to system clipboard
+nnoremap <Leader>yd :let @+=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>
+
 " default to very magic
 "no / /\v
 
+" gO to create a new line below cursor in normal mode
 nmap g<C-O> o<ESC>k
 " g<Ctrl+o> to create a new line above cursor (Ctrl to prevent collision with 'go' command)
 nmap gO O<ESC>j
@@ -82,13 +89,12 @@ nmap { {zz
 "map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 "quick pairs
-imap <Leader>' ''<ESC>i
-imap <Leader>" ""<ESC>i
-imap <Leader>) ()<ESC>i
-imap <Leader>] []<ESC>i
-imap <Leader>} {}<ESC>i
-
-imap <Leader>> <><ESC>i
+imap '' ''<ESC>i
+imap "" ""<ESC>i
+imap () ()<ESC>i
+imap [] []<ESC>i
+imap {} {}<ESC>i
+imap <> <><ESC>i
 imap <Leader>; <ESC>$a;<CR>
 
 

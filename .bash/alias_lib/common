@@ -20,7 +20,7 @@ alias o='popd'
 alias d='dirs'
 alias less='less -R'
 alias du='du -hs'
-
+alias findfile='sudo find / -type f -iname'
 
 alias follow=". ~/bin/follow"
 # vim: set syn=sh :
@@ -29,3 +29,7 @@ alias follow=". ~/bin/follow"
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
 alias lsof_ports='lsof -Pnl +M -i4'
+alias psmem='ps -eo pmem,pcpu,rss,vsize,args --sort -rss,-vsize | head'
+
+alias android-connect="mtpfs -o allow_other /media/Nexus"
+alias android-disconnect="fusermount -u /media/Nexus"
