@@ -6,23 +6,25 @@ INSTALLDIR=${1:-$HOME}
 for i in .bash  .bash_logout  .bashrc  bin  completion .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config
 do
 	mv $INSTALLDIR/$i $INSTALLDIR/$i.old 2> /dev/null
-	ln -s $PWD/$i $INSTALLDIR/$i;
+	ln -s -f $PWD/$i $INSTALLDIR/$i;
 done;
 
-echo -n "Do you want to use my vim configs? [n/Y]"
+echo -n "Do you want to use my vim configs? [Y/n]"
 read -n 1 use_vim_configs
 
-if [ "$use_vim_configs" == "Y" ]; then
-	ln -s $PWD/.vim $INSTALLDIR/.vim
-	ln -s $PWD/.vimrc $INSTALLDIR/.vimrc
+if [ "$use_vim_configs" != "n" ]; then
+	test -d $INSTALLDIR/.vim && rm -rf $INSTALLDIR/.vim
+	ln -s -f $PWD/.vim $INSTALLDIR/.vim
+	ln -s -f $PWD/.vimrc $INSTALLDIR/.vimrc
 fi
 echo
 
+
 echo "Git config settings"
-echo -n "Name: "
-read git_name
-echo -ne "\nEmail: "
-read git_email
+git_name="epish"
+echo -n "Name: $name"
+git_email="epishan@gmail.com"
+echo -ne "\nEmail: $git_email"
 
 cp $PWD/.gitconfig $INSTALLDIR/.gitconfig
 sed -i "s/%%GITNAME%%/$git_name/" $INSTALLDIR/.gitconfig
