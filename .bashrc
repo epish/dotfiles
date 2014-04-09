@@ -26,6 +26,10 @@ if [ -f /home/${USER}/.bash/aliases ]; then
 	. /home/${USER}/.bash/aliases
 fi
 
+# aws config environs
+if [ -f /home/${USER}/.aws/config.sh ]; then
+	. /home/${USER}/.aws/config.sh
+fi
 
 export PATH=$PATH":/home/${USER}/bin/"
 
