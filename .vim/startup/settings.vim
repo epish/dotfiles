@@ -34,6 +34,7 @@ set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
 set shiftround    " round indent to multiple of 'shiftwidth'
 set autoindent    " align the new line indent with the previous line
+set pastetoggle=<F2> "toogles paste mode to avoid unwanted indentation
 set foldcolumn=1
 set cc=+1,+2
 
