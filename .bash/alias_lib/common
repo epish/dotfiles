@@ -10,7 +10,7 @@ alias rm='rm -i'
 alias ls='ls --color=always'
 alias ll='ls -lArtF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -1tr --color=no'
 
 alias clear='echo -e "\e[2J"'
 alias nl="nl -ba"
