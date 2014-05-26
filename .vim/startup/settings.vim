@@ -1,4 +1,3 @@
-"============== general settings ===============
 set showcmd
 set dict=/usr/share/dict/words
 set cursorline
@@ -26,6 +25,7 @@ set nocompatible
 
 set enc=utf-8
 set fillchars=vert:¦
+set ff=dos
 
 set textwidth=79  " lines longer than 79 columns will be broken
 set expandtab     " insert spaces when hitting TABs

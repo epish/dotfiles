@@ -1,3 +1,8 @@
+#preserve aliases in sudo 
+#If the last character of the alias value is a space or tab character, then the
+#next command word following the alias is also checked for alias expansion.
+alias sudo='sudo '
+
 # common aliases
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
