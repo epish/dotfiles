@@ -35,14 +35,14 @@ export PATH=$PATH":/home/${USER}/bin/"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -67,7 +67,8 @@ delim1='\342\224\200'
 
 export PS0="${COL_delim}\342\224\214$delim1\$([[ \$? != 0 ]] && echo \"[${COL_warn}\342\234\227${COL_delim}]$delim1\")[$(if [[ ${EUID} == 0 ]]; then echo '${COL_warn}\h'; else echo "${COL_user}\u${COL_delim}@$COL_host\h"; fi)${COL_delim}]$delim1[${COL_pwd}\w${COL_delim}]%{$delim1($COL_repo%b%c%u%f%t$base_color)%}\n${COL_delim}\342\224\224$delim1$delim1${COL_hist}[\!]${COL_delim}\342\225\274 ${base_color}"
 
-export PROMPT_COMMAND='export PS1=$(gitprompt.pl c=%[%e[38\;5\;10m\(2commit\) u=%[%e[33m\(u=touched\) f=%[%e[38\;5\;15m\(f=untracked\) statuscount=1)'
+PROMPT_COMMAND='export PS1=$(gitprompt.pl c=%[%e[38\;5\;10m\(2commit\) u=%[%e[33m\(u=touched\) f=%[%e[38\;5\;15m\(f=untracked\) statuscount=1)'
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
 #export PS0='\[[38;5;202m\]\u\[[37m\] in \[[38;5;107m\]\w\[[37m\] on \[[38;5;1m\]\h\[[37m\]%{ at \[\e[38;5;25m\]%b%c%u%f%t\[\e[0m\]%} - '
