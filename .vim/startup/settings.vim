@@ -27,7 +27,7 @@ set enc=utf-8
 set fillchars=vert:¦
 set ff=dos
 
-set textwidth=79  " lines longer than 79 columns will be broken
+"set textwidth=79  " lines longer than 79 columns will be broken
 set expandtab     " insert spaces when hitting TABs
 set tabstop=4     " an hard TAB displays as 4 columns
 set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
