@@ -31,7 +31,7 @@ if [ -f /home/${USER}/.aws/config.sh ]; then
 	. /home/${USER}/.aws/config.sh
 fi
 
-export PATH=$PATH":/home/${USER}/bin/"
+export PATH=$PATH":/home/${USER}/bin/:/opt/cisco/anyconnect/bin/"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
