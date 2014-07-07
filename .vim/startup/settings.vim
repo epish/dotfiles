@@ -28,6 +28,10 @@ set fillchars=vert:¦
 set ff=dos
 
 "set textwidth=79  " lines longer than 79 columns will be broken
+"set cc=+1,+2
+if exists('+colorcolumn')
+       	set colorcolumn=80
+endif
 set expandtab     " insert spaces when hitting TABs
 set tabstop=4     " an hard TAB displays as 4 columns
 set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
@@ -36,12 +40,10 @@ set shiftround    " round indent to multiple of 'shiftwidth'
 set autoindent    " align the new line indent with the previous line
 set pastetoggle=<F2> "toogles paste mode to avoid unwanted indentation
 set foldcolumn=1
-set cc=+1,+2
 
 set linespace=0
 set history=1000
 set list listchars=tab:› ,trail:-,extends:>,precedes:<,eol:¬
-set colorcolumn=80
 
 set laststatus=2
 set ffs=unix

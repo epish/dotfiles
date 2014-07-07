@@ -23,10 +23,10 @@ shelltitle "shell"
 shell -$SHELL
 
 # screens
-screen -t 'vim' "vim"
-screen -t 'hudson-snei' "ssh hudson-snei"
-screen -t 'us-jenkins' "ssh ussdisqaat01"
-screen -t 'qad-5' "snei-qad-5"
+screen -t 'vim' 
+screen -t 'hudson-snei'
+screen -t 'us-jenkins'
+screen -t 'qad-5'
 
 term screen-256color
 
