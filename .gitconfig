@@ -2,7 +2,6 @@
   name = %%GITNAME%%
   email = %%GITEMAIL%%
 [diff]
-  external = git_diff_wrapper
 [pager]
   diff =
 [color]
@@ -17,3 +16,10 @@
     cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
     trustExitCode = true
 # vim: set et :
+[pull]
+    rebase = true
+    ff = only
+[branch "master"]
+    mergeoptions = --no-ff
+[branch "release"]
+    mergeoptions = --no-ff
