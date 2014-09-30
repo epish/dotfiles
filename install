@@ -21,9 +21,9 @@ echo
 
 
 echo "Git config settings"
-git_name="epish"
+git_name="Sergey Epishkin"
 echo -n "Name: $name"
-git_email="epishan@gmail.com"
+git_email="sergey.epishkin@lazada.com"
 echo -ne "\nEmail: $git_email"
 
 cp $PWD/.gitconfig $INSTALLDIR/.gitconfig
