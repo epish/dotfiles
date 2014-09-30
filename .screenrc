@@ -23,10 +23,6 @@ shelltitle "shell"
 shell -$SHELL
 
 # screens
-screen -t 'vim' 
-screen -t 'hudson-snei'
-screen -t 'us-jenkins'
-screen -t 'qad-5'
 
 term screen-256color
 
