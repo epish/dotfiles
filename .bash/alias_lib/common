@@ -26,6 +26,7 @@ alias d='dirs'
 alias less='less -R'
 alias du='du -hs'
 alias findfile='sudo find / -type f -iname'
+alias find_all_ft="find -type f -name '*.*' | sed 's|.*\.||' | sort -u"
 
 alias follow=". ~/bin/follow"
 # vim: set syn=sh :
@@ -39,3 +40,6 @@ alias psthreads="ps -eL -o pid,state,command,lwp | awk '\$2 ~ /R|D/ {print \$4, 
 
 alias android-connect="mtpfs -o allow_other /media/Nexus"
 alias android-disconnect="fusermount -u /media/Nexus"
+
+alias docker_stop_all='docker stop $(docker ps -a -q)'
+alias docker_rm_all='docker rm $(docker ps -a -q)'
