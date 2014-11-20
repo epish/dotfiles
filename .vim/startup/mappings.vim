@@ -61,7 +61,7 @@ nmap ]c ]czz
 nmap [c [czz
 
 "copy all to X-buffer
-nmap ya gg"+yG
+"nmap ya gg"+yG
 "copy string to X-buffer
 nmap yc "+yy
 " Copy current buffer path relative to root of VIM session to system clipboard
@@ -102,6 +102,7 @@ imap <Leader>; <ESC>$a;<CR>
 "============== Filetype based executuion ===============
 "python script execution
 autocmd FileType python  nnoremap <Leader>r :exec '!python %'<CR>
+nmap =j :%!python -m json.tool<CR>
 "============== Filetype based commenting ===============
 "" perl style # commenting
 autocmd FileType python,sh,php,yaml  noremap <Leader>c :s/\v^(\s*)/\1#/ <CR>
