@@ -15,7 +15,9 @@ vbell on
 vbell_msg "bell on %t (%n)"
 
 # look and feel
-hardstatus alwayslastline "%{=b cW} %H %{= kK} %= %?%-Lw%?%{= kw}%n%{= R}*%{-}%f %t%>%{= kK}%?%?%?%+Lw%?%?%>%= %{= cW} %m/%d %{= Ck} %c %{w}%{w}"
+backtick 1 5 5 hostname -f
+hardstatus alwayslastline
+hardstatus string "%{=b cW} %1` %{= kK} %= %?%-Lw%?%{= kw}%n%{= R}*%{-}%f %t%>%{= kK}%?%?%?%+Lw%?%?%>%= %{= kW} Load: %l %{= cW} %m/%d %{= Ck} %c %{w}%{w}"
 
 activity "Activity in %t(%n)"
 
