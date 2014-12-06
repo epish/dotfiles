@@ -100,6 +100,8 @@ function calc
   echo "${1}" | bc -l;
 }
 
+### Init ssh-agent
+ssh-add -l || ( eval $(ssh-agent) && ssh-add )
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
