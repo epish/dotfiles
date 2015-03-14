@@ -101,7 +101,8 @@ function calc
 }
 
 ### Init ssh-agent
-ssh-add -l || ( eval $(ssh-agent) && ssh-add )
+#[ -z "$SSH_AGENT_PID" ] || echo "ssh agent is rinning $SSH_AGENT_PID"
+ssh-add -l || eval $(ssh-agent -s); ssh-add ~/.ssh/id_rsa
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
