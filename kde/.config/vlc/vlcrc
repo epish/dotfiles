@@ -3571,7 +3571,7 @@ qt-privacy-ask=0
 #audio=1
 
 # Default audio volume (integer)
-#volume=256
+volume=167
 
 # Audio output volume step (integer)
 #volume-step=32
@@ -4198,7 +4198,7 @@ album-art=2
 #global-key-stop=
 
 # Stop (string)
-#key-stop=s
+key-stop=Shift+s
 
 # Position (string)
 #global-key-position=
@@ -4210,13 +4210,13 @@ album-art=2
 #global-key-jump-extrashort=
 
 # Very short backwards jump (string)
-#key-jump-extrashort=Shift+Left
+key-jump-extrashort=Ctrl+Left
 
 # Very short forward jump (string)
 #global-key-jump+extrashort=
 
 # Very short forward jump (string)
-#key-jump+extrashort=Shift+Right
+key-jump+extrashort=Ctrl+Right
 
 # Short backwards jump (string)
 #global-key-jump-short=
@@ -4234,13 +4234,13 @@ album-art=2
 #global-key-jump-medium=
 
 # Medium backwards jump (string)
-#key-jump-medium=Ctrl+Left
+key-jump-medium=Shift+Left
 
 # Medium forward jump (string)
 #global-key-jump+medium=
 
 # Medium forward jump (string)
-#key-jump+medium=Ctrl+Right
+key-jump+medium=Shift+Right
 
 # Long backwards jump (string)
 #global-key-jump-long=
@@ -4264,7 +4264,7 @@ album-art=2
 #global-key-nav-activate=
 
 # Activate (string)
-#key-nav-activate=Enter
+key-nav-activate=Unset
 
 # Navigate up (string)
 #global-key-nav-up=
@@ -4384,7 +4384,7 @@ album-art=2
 #global-key-audio-track=
 
 # Cycle audio track (string)
-#key-audio-track=b
+key-audio-track=a
 
 # Cycle through audio devices (string)
 #global-key-audiodevice-cycle=
@@ -4396,13 +4396,13 @@ album-art=2
 #global-key-subtitle-track=
 
 # Cycle subtitle track (string)
-#key-subtitle-track=v
+key-subtitle-track=s
 
 # Cycle source aspect ratio (string)
 #global-key-aspect-ratio=
 
 # Cycle source aspect ratio (string)
-#key-aspect-ratio=a
+key-aspect-ratio=Unset
 
 # Cycle video crop (string)
 #global-key-crop=
@@ -4450,7 +4450,7 @@ album-art=2
 #global-key-snapshot=
 
 # Take video snapshot (string)
-#key-snapshot=Shift+s
+key-snapshot=Unset
 
 # Record (string)
 #global-key-record=
@@ -4764,3 +4764,30 @@ album-art=2
 # Playlist bookmark 10 (string)
 #bookmark10=
 
+[vcdx] # Video CD (VCD 1.0, 1.1, 2.0, SVCD, HQVCD) input
+# If nonzero, this gives additional debug information. (integer)
+#vcdx-debug=0
+# Number of CD blocks to get in a single read. (integer)
+#vcdx-blocks-per-read=20
+# Use playback control? (boolean)
+#vcdx-PBC=0
+# Use track length as maximum unit in seek? (boolean)
+#vcdx-track-length=1
+# Show extended VCD info? (boolean)
+#vcdx-extended-info=0
+# Format to use in the playlist's "author" field. (string)
+#vcdx-author-format=%v - %F disc %c of %C
+# Format to use in the playlist's "title" field. (string)
+#vcdx-title-format=%I %N %L%S - %M %A %v - disc %c of %C %F
+[access_oss] # OSS input
+# Stereo (boolean)
+#oss-stereo=1
+# Samplerate (integer)
+#oss-samplerate=48000
+[svcdsub] # Philips OGT (SVCD subtitle) decoder
+[notify] # LibNotify Notification Plugin
+# Timeout (ms) (integer)
+#notify-timeout=4000
+[oss] # Open Sound System
+# OSS DSP device (string)
+#oss-audio-device=/dev/dsp
