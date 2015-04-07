@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 2.0.9
+###  vlc 2.0.10
 ###
 
 ###
@@ -2981,13 +2981,13 @@
 [freetype] # Freetype2 font renderer
 
 # Font (string)
-#freetype-font=Serif Bold
+freetype-font=DejaVu Sans
 
 # Font size in pixels (integer)
 #freetype-fontsize=0
 
 # Relative font size (integer)
-#freetype-rel-fontsize=16
+freetype-rel-fontsize=20
 
 # Text opacity (integer)
 #freetype-opacity=255
@@ -3571,7 +3571,7 @@ qt-privacy-ask=0
 #audio=1
 
 # Default audio volume (integer)
-volume=167
+volume=179
 
 # Audio output volume step (integer)
 #volume-step=32
