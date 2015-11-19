@@ -1,9 +1,18 @@
 export EDITOR="vim"
 set -o vi
 
-# remaps Caps_Lock key to a second Escape
-xmodmap -e "remove lock = Caps_Lock" 2> /dev/null
-xmodmap -e "keysym Caps_Lock = Escape" 2> /dev/null
+
+if [ "$(uname)" == "Darwin" ]; then
+    # Do something under Mac OS X platform
+    :
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Do something under GNU/Linux platform
+    # remaps Caps_Lock key to a second Escape; on mac remap via GUI
+    xmodmap -e "remove lock = Caps_Lock" 2> /dev/null
+    xmodmap -e "keysym Caps_Lock = Escape" 2> /dev/null
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    echo If this clause is non-empty - consider me dead
+fi
 
 # If not running interactively, don't do anything
 case $- in
@@ -12,26 +21,26 @@ case $- in
 esac
 
 for i in ~/completion/*; do
+    #echo "loading $i"
 	. $i
 done
 
 
 # custom functions
-if [ -f /home/${USER}/.bash/functions ]; then
-	. /home/${USER}/.bash/functions
+if [ -f ${HOME}/.bash/functions ]; then
+	. ${HOME}/.bash/functions
 fi
 
 # custom functions
-if [ -f /home/${USER}/.bash/aliases ]; then
-	. /home/${USER}/.bash/aliases
+if [ -f ${HOME}/.bash/aliases ]; then
+	. ${HOME}/.bash/aliases
 fi
 
 # aws config environs
-if [ -f /home/${USER}/.aws/config.sh ]; then
-	. /home/${USER}/.aws/config.sh
+if [ -f ${HOME}/.aws/config.sh ]; then
+	. ${HOME}/.aws/config.sh
 fi
 
-export PATH=$PATH":/home/${USER}/bin/:/opt/cisco/anyconnect/bin/"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -100,9 +109,8 @@ function calc
   echo "${1}" | bc -l;
 }
 
-### Init ssh-agent
-#[ -z "$SSH_AGENT_PID" ] || echo "ssh agent is rinning $SSH_AGENT_PID"
-ssh-add -l || eval $(ssh-agent -s); ssh-add ~/.ssh/id_rsa
+export PATH=$PATH":${HOME}/bin/"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+### Init ssh-agent
+#ssh-add -l || eval $(ssh-agent -s); ssh-add ~/.ssh/id_rsa
+(ssh-add -l || ssh-add ~/.ssh/id_rsa) > /dev/null

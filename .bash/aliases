@@ -1,4 +1,4 @@
-for i in /home/${USER}/.bash/alias_lib/*; do
+for i in ${HOME}/.bash/alias_lib/*; do
 	. $i
 done
 

@@ -1,4 +1,4 @@
-for i in /home/${USER}/.bash/func_lib/*; do
+for i in ${HOME}/.bash/func_lib/*; do
 	. $i
 done
 

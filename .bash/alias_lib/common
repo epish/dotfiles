@@ -12,10 +12,15 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 
-alias ls='ls --color=always'
 alias ll='ls -lArtF'
 alias la='ls -A'
-alias l='ls -1tr --color=no'
+if [ "$(uname)" == "Darwin" ]; then
+    alias ls='ls -G'
+    alias l='ls -1tr'
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    alias ls='ls --color=always'
+    alias l='ls -1tr --color=no'
+fi
 
 alias clear='echo -e "\e[2J"'
 alias nl="nl -ba"
@@ -32,6 +37,7 @@ alias follow=". ~/bin/follow"
 # vim: set syn=sh :
 
 #utils
+alias xargs='gxargs'
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
 alias lsof_ports='lsof -Pnl +M -i4'

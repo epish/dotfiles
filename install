@@ -5,11 +5,12 @@ INSTALLDIR=${1:-$HOME}
 
 for i in .bash  .bash_logout  .bashrc  bin  completion .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config
 do
-	mv $INSTALLDIR/$i $INSTALLDIR/$i.old 2> /dev/null
+	#echo moving $INSTALLDIR/$i to $INSTALLDIR/$i.old 2> /dev/null
+	mv $INSTALLDIR/$i $INSTALLDIR/$i.old 
 	ln -s -f $PWD/$i $INSTALLDIR/$i;
 done;
 
-echo -n "Do you want to use my vim configs? [Y/n]"
+echo  "Do you want to use my vim configs? [Y/n]"
 read -n 1 use_vim_configs
 
 if [ "$use_vim_configs" != "n" ]; then
@@ -22,13 +23,13 @@ echo
 
 echo "Git config settings"
 git_name="Sergey Epishkin"
-echo -n "Name: $name"
+echo  "Name: $name"
 git_email="sergey.epishkin@lazada.com"
-echo -ne "\nEmail: $git_email"
+echo  "Email: $git_email"
 
 cp $PWD/.gitconfig $INSTALLDIR/.gitconfig
-sed -i "s/%%GITNAME%%/$git_name/" $INSTALLDIR/.gitconfig
-sed -i "s/%%GITEMAIL%%/$git_email/" $INSTALLDIR/.gitconfig
+sed -i.old "s/%%GITNAME%%/$git_name/" $INSTALLDIR/.gitconfig
+sed -i.old "s/%%GITEMAIL%%/$git_email/" $INSTALLDIR/.gitconfig
 
 if [ ! -d $INSTALLDIR/.node-completion ]; then
 	mkdir $INSTALLDIR/.node-completion
