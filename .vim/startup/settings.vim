@@ -47,7 +47,7 @@ set list listchars=tab:› ,trail:-,extends:>,precedes:<,eol:¬
 
 set laststatus=2
 set ffs=unix
-set mouse=a
+"set mouse=a
 set vb
 set ttym=xterm2
 

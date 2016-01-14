@@ -109,7 +109,9 @@ function calc
   echo "${1}" | bc -l;
 }
 
-export PATH=$PATH":${HOME}/bin/"
+export PATH="$PATH:${HOME}/bin/"
+export GOPATH="$HOME/repos/go"
+export PATH="$PATH:/usr/local/go/bin"
 
 ### Init ssh-agent
 #ssh-add -l || eval $(ssh-agent -s); ssh-add ~/.ssh/id_rsa
