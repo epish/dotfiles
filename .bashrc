@@ -111,8 +111,22 @@ function calc
 
 export PATH="$PATH:${HOME}/bin/"
 export GOPATH="$HOME/repos/go"
-export PATH="$PATH:/usr/local/go/bin"
+export GOROOT="/usr/local/go"
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+export PATH="$PATH:${HOME}/.composer/vendor/bin/"
 
-### Init ssh-agent
-#ssh-add -l || eval $(ssh-agent -s); ssh-add ~/.ssh/id_rsa
-(ssh-add -l || ssh-add ~/.ssh/id_rsa) > /dev/null
+
+### Init/reuse ssh-agent
+ssh-add -l &>/dev/null
+if [ "$?" != 0 ]; then
+  #echo "agent is not running"
+  test -r ~/.ssh-agent && eval "$(<~/.ssh-agent)" >/dev/null
+
+  ssh-add -l &>/dev/null
+  if [ "$?" != 0 ]; then
+    echo "agent is STILL not running"
+    (umask 066; ssh-agent > ~/.ssh-agent)
+    eval "$(<~/.ssh-agent)" >/dev/null
+    ssh-add
+  fi
+fi
