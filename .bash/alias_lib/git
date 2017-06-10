@@ -1,7 +1,5 @@
 # git stuff
-alias gcm='git bulk checkout master'
-alias gbs='git bulk status'
 alias gs='git status'
-alias gitmerge='git mergetool -t vimdiff'
+alias gc='git commit -am'
+alias gca='git commit --amend'
 
-# vim: set syn=sh :

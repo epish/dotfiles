@@ -1,0 +1,36 @@
+# Docker aliases
+alias di='sudo docker images'
+alias dps='sudo docker ps'
+alias dpa='sudo docker ps -a'
+
+# useful Docker functions
+dock-run()  { sudo docker run -it --rm $@ ;}
+dock-arun() { sudo docker run -it --rm -v $(dirname $SSH_AUTH_SOCK) -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK $@ ;} 
+dock-wrun() { sudo docker run -it --rm -v `pwd`:/workspace -w /workspace $@ ;} 
+dock-exec() { sudo docker exec -i -t $@ /bin/bash ;}
+dock-log()  { sudo docker logs --tail=all -f $@ ;}
+dock-port() { sudo docker port $@ ;}
+dock-vol()  { sudo docker inspect --format '{{ .Volumes }}' $@ ;}
+dock-ip()   { sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $@ ;}
+dock-rmc()  { sudo docker rm `sudo docker ps -qa --filter 'status=exited'` ;}
+dock-rmi()  { sudo docker rmi -f `sudo docker images | grep '^<none>' | awk '{print $3}'` ;}
+
+# Dockerfile build, e.g., $dbu tcnksm/test 
+dock-bu()   { sudo docker build -t=$1 .; }
+
+
+dock-do() {
+   if [ "$#" -ne 1 ]; then
+      echo "Usage: $0 start|stop|pause|unpause|<any valid docker cmd>"
+   fi
+
+   for c in $(sudo docker ps -a | awk '{print $1}' | sed "1 d")
+   do
+       sudo docker $1 $c
+   done
+}
+
+# Show all alias related docker
+dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; } 
+
+dfunc() { typeset -F | grep 'dock-' | awk '{print $3}' ;}
