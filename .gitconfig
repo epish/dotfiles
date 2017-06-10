@@ -1,6 +1,6 @@
 [user]
-  name = %%GITNAME%%
-  email = %%GITEMAIL%%
+	name = Serge Epishan
+	email = epishan@gmail.com
 [diff]
 [pager]
   diff =
@@ -23,3 +23,5 @@
     mergeoptions = --no-ff
 [branch "release"]
     mergeoptions = --no-ff
+[push]
+	default = simple
