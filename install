@@ -2,11 +2,13 @@
 echo "Old .dotfiles moved to .file.old";
 
 INSTALLDIR=${1:-$HOME}
+BACKUP_DIR=${1:-$HOME}/.dot_bk
 
+rm -rfnv $BACKUP_DIR && mkdir -p $BACKUP_DIR
 for i in .bash  .bash_logout  .bashrc  bin  completion .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config
 do
-	#echo moving $INSTALLDIR/$i to $INSTALLDIR/$i.old 2> /dev/null
-	mv $INSTALLDIR/$i $INSTALLDIR/$i.old 
+	#echo moving $INSTALLDIR/$i to $INjjTALLDIR/$i.old 2> /dev/null
+	mv $INSTALLDIR/$i $BACKUP_DIR/
 	ln -s -f $PWD/$i $INSTALLDIR/$i;
 done;
 
@@ -22,9 +24,9 @@ echo
 
 
 echo "Git config settings"
-git_name="Sergey Epishkin"
+git_name="Serge Epishan"
 echo  "Name: $name"
-git_email="sergey.epishkin@lazada.com"
+git_email="epishan@gmail.com"
 echo  "Email: $git_email"
 
 cp $PWD/.gitconfig $INSTALLDIR/.gitconfig
