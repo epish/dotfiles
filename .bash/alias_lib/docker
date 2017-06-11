@@ -3,6 +3,11 @@ alias di='sudo docker images'
 alias dps='sudo docker ps'
 alias dpa='sudo docker ps -a'
 
+# docker-compose
+alias dc-up='sudo docker-compose up -d'
+alias dc-dn='sudo docker-compose down -v'
+
+
 # useful Docker functions
 dock-run()  { sudo docker run -it --rm $@ ;}
 dock-arun() { sudo docker run -it --rm -v $(dirname $SSH_AUTH_SOCK) -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK $@ ;} 
