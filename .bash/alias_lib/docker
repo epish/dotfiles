@@ -2,26 +2,30 @@
 alias di='sudo docker images'
 alias dps='sudo docker ps'
 alias dpa='sudo docker ps -a'
+alias dst='sudo docker stop'
+alias drm='sudo docker rm'
 
 # docker-compose
 alias dc-up='sudo docker-compose up -d'
 alias dc-dn='sudo docker-compose down -v'
+alias dc-ps='sudo docker-compose ps'
+alias dc-lg='sudo docker-compose logs'
 
 
 # useful Docker functions
-dock-run()  { sudo docker run -it --rm $@ ;}
-dock-arun() { sudo docker run -it --rm -v $(dirname $SSH_AUTH_SOCK) -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK $@ ;} 
-dock-wrun() { sudo docker run -it --rm -v `pwd`:/workspace -w /workspace $@ ;} 
-dock-exec() { sudo docker exec -i -t $@ /bin/bash ;}
-dock-log()  { sudo docker logs --tail=all -f $@ ;}
-dock-port() { sudo docker port $@ ;}
-dock-vol()  { sudo docker inspect --format '{{ .Volumes }}' $@ ;}
-dock-ip()   { sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $@ ;}
-dock-rmc()  { sudo docker rm `sudo docker ps -qa --filter 'status=exited'` ;}
-dock-rmi()  { sudo docker rmi -f `sudo docker images | grep '^<none>' | awk '{print $3}'` ;}
+dock-run()  { CMD="sudo docker run -it --rm $@ "; echo "$CMD"; $CMD ;}
+dock-arun() { CMD="sudo docker run -it --rm -v $(dirname $SSH_AUTH_SOCK) -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK $@ "; echo "$CMD"; $CMD ; } 
+dock-wrun() { CMD="sudo docker run -it --rm -v `pwd`:/workspace -w /workspace $@ "; echo "$CMD"; $CMD ; } 
+dock-exec() { CMD="sudo docker exec -i -t $@ /bin/bash "; echo "$CMD"; $CMD ; }
+dock-log()  { CMD="sudo docker logs --tail=all -f $@ "; echo "$CMD"; $CMD ; }
+dock-port() { CMD="sudo docker port $@ "; echo "$CMD"; $CMD ; }
+dock-vol()  { CMD="sudo docker inspect --format '{{ .Volumes }}' $@ "; echo "$CMD"; $CMD ; }
+dock-ip()   { CMD="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $@ "; echo "$CMD"; $CMD ; }
+dock-rmc()  { CMD="sudo docker rm `sudo docker ps -qa --filter 'status=exited'`"; echo "$CMD"; $CMD ; }
+dock-rmi()  { CMD="sudo docker rmi -f `sudo docker images | grep '^<none>' | awk '{print $3}'`"; echo "$CMD"; $CMD ; }
 
 # Dockerfile build, e.g., $dbu tcnksm/test 
-dock-bu()   { sudo docker build -t=$1 .; }
+dock-bu()  { CMD="sudo docker build -t=$@ . "; echo "$CMD"; $CMD ; }
 
 
 dock-do() {

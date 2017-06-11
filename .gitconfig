@@ -10,6 +10,8 @@
   st = status -a
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative
   ch = checkout -
+  co = checkout
+  cb = checkout -b
 [merge]
     tool = threesome
 [mergetool "threesome"]
