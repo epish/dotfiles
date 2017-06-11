@@ -21,6 +21,14 @@ if [ "$retval" != "n" ]; then
     read -e git_email
     echo  "Email: $git_email"
     git config --global user.email $git_email
+
+    # keeping this repository author
+    echo "Setting this repos author settings: $git_name <$git_email>"
+    git_name="epishan@gmail.com"
+    git_email="Serge Epishan"
+    git config  user.name "$git_name"
+    git config  user.email $git_email
+
 fi
 
 echo  "Do you want to use my vim configs? [Y/n]"
