@@ -127,6 +127,8 @@ if [ "$?" != 0 ]; then
     echo "agent is STILL not running"
     (umask 066; ssh-agent > ~/.ssh-agent)
     eval "$(<~/.ssh-agent)" >/dev/null
-    ssh-add $HOME/.ssh/id_rsa*
   fi
+  ssh-add $HOME/.ssh/id_rsa
+  ssh-add $HOME/.ssh/id_rsa_my
+  ssh-add $HOME/.ssh/id_rsa_lzd
 fi
