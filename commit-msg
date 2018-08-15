@@ -1,0 +1,13 @@
+#!/bin/bash
+ticket=`git rev-parse --abbrev-ref HEAD | sed -e 's|_.*||'`
+if [ "$ticket" == "HEAD" ]
+then
+    ## probably rebasing
+    exit
+fi
+comment=`cat $1`
+search=`grep "$ticket" $1`
+if [ -n "$ticket" ] && [ -z "$search" ]
+then
+    echo "[$ticket]: $comment" > $1
+fi
