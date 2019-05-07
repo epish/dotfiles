@@ -5,7 +5,7 @@ BACKUP_DIR=${1:-$HOME}/.dot_bk
 
 echo "Old .dotfiles moved to $BACKUP_DIR"
 rm -rfv $BACKUP_DIR; mkdir -p $BACKUP_DIR
-for i in .bash  .bash_logout  .bashrc  bin  completion .gitconfig .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config
+for i in .bash .bash_logout .bashrc bin completion .gitconfig .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config
 do
 	mv -v $INSTALLDIR/$i $BACKUP_DIR/
 	ln -sv -f $PWD/$i $INSTALLDIR/$i;
@@ -24,8 +24,8 @@ if [ "$retval" != "n" ]; then
 
     # keeping this repository author
     echo "Setting this repos author settings: $git_name <$git_email>"
-    git_name="epishan@gmail.com"
-    git_email="Serge Epishan"
+    git_email="sergey.epishkin@lazada.com"
+    git_name="Serge Epishan"
     git config  user.name "$git_name"
     git config  user.email $git_email
 
@@ -40,7 +40,6 @@ if [ "$use_vim_configs" != "n" ]; then
 	ln -s -f $PWD/.vimrc $INSTALLDIR/.vimrc
 fi
 echo
-
 
 
 if [ ! -d $INSTALLDIR/.node-completion ]; then

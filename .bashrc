@@ -129,6 +129,4 @@ if [ "$?" != 0 ]; then
     eval "$(<~/.ssh-agent)" >/dev/null
   fi
   ssh-add $HOME/.ssh/id_rsa
-  ssh-add $HOME/.ssh/id_rsa_my
-  ssh-add $HOME/.ssh/id_rsa_lzd
 fi
