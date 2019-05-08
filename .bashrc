@@ -1,6 +1,8 @@
 export EDITOR="vim"
 set -o vi
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 if [ "$(uname)" == "Darwin" ]; then
     # Do something under Mac OS X platform
@@ -64,27 +66,8 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-base_color='\[\e[0m\]'
-COL_delim='\[\e[0;37m\]'
-COL_user='\[\e[0;94m\]'
-COL_warn='\[\e[0;31m\]'
-COL_host='\[\e[0;96m\]'
-COL_pwd='\[\e[0;32m\]'
-COL_hist='\[\e[0;93m\]'
-COL_repo='\[\e[0;34m\]'
-delim1='\342\224\200'
-
-export PS0="${COL_delim}\342\224\214$delim1\$([[ \$? != 0 ]] && echo \"[${COL_warn}\342\234\227${COL_delim}]$delim1\")[$(if [[ ${EUID} == 0 ]]; then echo '${COL_warn}\h'; else echo "${COL_user}\u${COL_delim}@$COL_host\h"; fi)${COL_delim}]$delim1[${COL_pwd}\w${COL_delim}]%{$delim1($COL_repo%b%c%u%f%t$base_color)%}\n${COL_delim}\342\224\224$delim1$delim1${COL_hist}[\!]${COL_delim}\342\225\274 ${base_color}"
-
-PROMPT_COMMAND='export PS1=$(gitprompt.pl c=%[%e[38\;5\;10m\(2commit\) u=%[%e[33m\(u=touched\) f=%[%e[38\;5\;15m\(f=untracked\) statuscount=1)'
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
-#export PS0='\[[38;5;202m\]\u\[[37m\] in \[[38;5;107m\]\w\[[37m\] on \[[38;5;1m\]\h\[[37m\]%{ at \[\e[38;5;25m\]%b%c%u%f%t\[\e[0m\]%} - '
-#export PROMPT_COMMAND='export PS1=$(gitprompt.pl c=%[%e[38\;5\;10m u=%[%e[33m f=%[%e[38\;5\;15m statuscount=1)'
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
 #setup color scheme for ls
@@ -103,11 +86,21 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export BASH_COMPLETION_COMPAT_DIR=/usr/local/etc/bash_completion.d
+[[ -r /usr/local/etc/profile.d/bash_completion.sh ]] && . /usr/local/etc/profile.d/bash_completion.sh
+
 #Better Console Calculator Using bc
 function calc
 {
   echo "${1}" | bc -l;
 }
+
+
+export PATH=$PATH:$HOME/Library/Python/2.7/bin
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. ${HOME}/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
 
 export PATH="$PATH:${HOME}/bin/"
 export GOPATH="$HOME/repos/go"
