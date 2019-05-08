@@ -83,24 +83,11 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  elif [ -r /usr/local/etc/profile.d/bash_completion.sh ]; then
+    export BASH_COMPLETION_COMPAT_DIR=/usr/local/etc/bash_completion.d
+    . /usr/local/etc/profile.d/bash_completion.sh
   fi
 fi
-
-export BASH_COMPLETION_COMPAT_DIR=/usr/local/etc/bash_completion.d
-[[ -r /usr/local/etc/profile.d/bash_completion.sh ]] && . /usr/local/etc/profile.d/bash_completion.sh
-
-#Better Console Calculator Using bc
-function calc
-{
-  echo "${1}" | bc -l;
-}
-
-
-export PATH=$PATH:$HOME/Library/Python/2.7/bin
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. ${HOME}/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
 
 export PATH="$PATH:${HOME}/bin/"
 export GOPATH="$HOME/repos/go"
@@ -108,6 +95,16 @@ export GOROOT="/usr/local/go"
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 export PATH="$PATH:${HOME}/.composer/vendor/bin/"
 
+## stuff for poweline
+PYTHON_PATH=$HOME/Library/Python/2.7
+if [ -r $PYTHON_PATH/lib/python/site-packages/powerline/bindings/bash/powerline.sh ]; then
+   export PATH=$PATH:$PYTHON_PATH/bin
+   powerline-daemon -q
+   export POWERLINE_BASH_CONTINUATION=1
+   export POWERLINE_BASH_SELECT=1
+   export RENDER_POWERLINE_KUBERNETES="NO"
+   . $PYTHON_PATH/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+fi
 
 ### Init/reuse ssh-agent
 ssh-add -l &>/dev/null
@@ -120,6 +117,6 @@ if [ "$?" != 0 ]; then
     echo "agent is STILL not running"
     (umask 066; ssh-agent > ~/.ssh-agent)
     eval "$(<~/.ssh-agent)" >/dev/null
+    [[ -r $HOME/.ssh/id_rsa ]] && ssh-add $HOME/.ssh/id_rsa
   fi
-  ssh-add $HOME/.ssh/id_rsa
 fi
