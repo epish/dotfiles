@@ -33,6 +33,8 @@ alias less='less -R'
 alias du='du -hs'
 alias findfile='sudo find / -type f -iname'
 alias find_all_ft="find -type f -name '*.*' | sed 's|.*\.||' | sort -u"
+# custom paths
+alias cdrt="cd $HOME/repos/PLATFORM/release_tools"
 
 alias follow=". ~/bin/follow"
 # vim: set syn=sh :
