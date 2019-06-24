@@ -1,0 +1,25 @@
+# kubectl aliases
+alias kgetctx='kubectl config get-contexts'
+alias kusectx='kubectl config use-context'
+alias kgetpo='kubectl get pods -o wide'
+alias kdescpo='kubectl describe pod'
+alias klogs='kubectl logs'
+
+
+# useful kubectls functions
+k-setns()  { CMD="kubectl config set-context $(kubectl config current-context) --namespace=$@ "; echo "$CMD"; $CMD ;}
+k-exec()   { CMD="kubectl exec -it $@ -- bash "; echo "$CMD"; $CMD ; } 
+#dock-wrun() { CMD="sudo docker run -it --rm -v `pwd`:/workspace -w /workspace $@ "; echo "$CMD"; $CMD ; } 
+#dock-exec() { CMD="sudo docker exec -i -t $@ /bin/bash "; echo "$CMD"; $CMD ; }
+#dock-log()  { CMD="sudo docker logs --tail=all -f $@ "; echo "$CMD"; $CMD ; }
+#dock-port() { CMD="sudo docker port $@ "; echo "$CMD"; $CMD ; }
+#dock-vol()  { CMD="sudo docker inspect --format '{{ .Volumes }}' $@ "; echo "$CMD"; $CMD ; }
+#dock-ip()   { CMD="sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $@ "; echo "$CMD"; $CMD ; }
+#dock-rmc()  { CMD="sudo docker rm `sudo docker ps -qa --filter 'status=exited'`"; echo "$CMD"; $CMD ; }
+#dock-rmi()  { CMD="sudo docker rmi -f `sudo docker images | grep '^<none>' | awk '{print $3}'`"; echo "$CMD"; $CMD ; }
+
+
+# Show all alias related docker
+kalias() { alias | grep 'kubectl' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; } 
+
+kfunc() { typeset -F | grep 'k-' | awk '{print $3}' ;}
