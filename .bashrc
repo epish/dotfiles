@@ -67,9 +67,6 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 
-
-
-
 #setup color scheme for ls
 if [ -f ~/.bash/lscolorscheme.sh ]; then
     . ~/.bash/lscolorscheme.sh
@@ -96,14 +93,24 @@ export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 export PATH="$PATH:${HOME}/.composer/vendor/bin/"
 
 ## stuff for poweline
-PYTHON_PATH=$HOME/Library/Python/2.7
-if [ -r $PYTHON_PATH/lib/python/site-packages/powerline/bindings/bash/powerline.sh ]; then
-   export PATH=$PATH:$PYTHON_PATH/bin
-   powerline-daemon -q
-   export POWERLINE_BASH_CONTINUATION=1
-   export POWERLINE_BASH_SELECT=1
-   export RENDER_POWERLINE_KUBERNETES="NO"
-   . $PYTHON_PATH/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+if [ "$(uname)" == "Darwin" ]; then
+  PYTHON_PATH=$HOME/Library/Python/2.7
+  if [ -r $PYTHON_PATH/lib/python/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    export PATH=$PATH:$PYTHON_PATH/bin
+    powerline-daemon -q
+    export POWERLINE_BASH_CONTINUATION=1
+    export POWERLINE_BASH_SELECT=1
+    export RENDER_POWERLINE_KUBERNETES="NO"
+    . $PYTHON_PATH/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+  fi
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
+    powerline-daemon -q
+    export POWERLINE_BASH_CONTINUATION=1
+    export POWERLINE_BASH_SELECT=1
+    export RENDER_POWERLINE_KUBERNETES="NO"
+    . /usr/share/powerline/bindings/bash/powerline.sh
+  fi
 fi
 
 ### Init/reuse ssh-agent
