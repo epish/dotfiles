@@ -1,7 +1,15 @@
 kshow() {
-    if [[ $RENDER_POWERLINE_KUBERNETES = "NO" ]]; then
-    export RENDER_POWERLINE_KUBERNETES=YES
+    if [[ -z $KUBE_PWL_ENABLED ]]; then
+        export KUBE_PWL_ENABLED="YES"
     else
-    export RENDER_POWERLINE_KUBERNETES=NO
+        unset KUBE_PWL_ENABLED
+    fi
+}
+
+tfshow() {
+    if [[ -z $TF_PWL_ENABLED ]]; then
+        export TF_PWL_ENABLED="YES"
+    else
+        unset TF_PWL_ENABLED
     fi
 }

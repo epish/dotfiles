@@ -1,0 +1,5 @@
+alias tf='terraform'
+alias tfw='terraform workspace'
+alias tfw-dev='terraform workspace select dev'
+alias tfw-stage='terraform workspace select stage'
+alias tfw-prod='terraform workspace select prod'

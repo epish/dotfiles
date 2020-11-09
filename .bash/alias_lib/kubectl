@@ -1,14 +1,27 @@
 # kubectl aliases
+alias k='kubectl '
 alias kgetctx='kubectl config get-contexts'
 alias kusectx='kubectl config use-context'
-alias kgetpo='kubectl get pods -o wide'
+alias kgetpo='kubectl get pods'
+alias kgetss='kubectl get statefulset -o wide'
 alias kdescpo='kubectl describe pod'
 alias klogs='kubectl logs'
 
 
 # useful kubectls functions
 k-setns()  { CMD="kubectl config set-context $(kubectl config current-context) --namespace=$@ "; echo "$CMD"; $CMD ;}
-k-exec()   { CMD="kubectl exec -it $@ -- bash "; echo "$CMD"; $CMD ; } 
+k-exec()   { CMD="kubectl exec -it $@ -- /bin/sh "; echo "$CMD"; $CMD ; } 
+k-infra_pod() { kubectl exec -ti -n infra $(kubectl get pods -n infra | awk '/service-pod-/ {print $1}') env COLUMNS=$COLUMNS LINES=$LINES TERM=$TERM /bin/bash ; }
+
+gcloud_init()  {
+  ENV=$1;
+  REGION=asia-southeast1
+  GKE_PROJECT=`gcloud projects list --filter="name=gke-$ENV" | grep gke | awk '{print $1}'`
+  CMD="gcloud container clusters get-credentials $ENV --project=$GKE_PROJECT --region=asia-southeast1"
+  echo $CMD ;
+  $CMD ;
+  kubectl cluster-info
+}
 #dock-wrun() { CMD="sudo docker run -it --rm -v `pwd`:/workspace -w /workspace $@ "; echo "$CMD"; $CMD ; } 
 #dock-exec() { CMD="sudo docker exec -i -t $@ /bin/bash "; echo "$CMD"; $CMD ; }
 #dock-log()  { CMD="sudo docker logs --tail=all -f $@ "; echo "$CMD"; $CMD ; }
@@ -22,4 +35,5 @@ k-exec()   { CMD="kubectl exec -it $@ -- bash "; echo "$CMD"; $CMD ; }
 # Show all alias related docker
 kalias() { alias | grep 'kubectl' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; } 
 
-kfunc() { typeset -F | grep 'k-' | awk '{print $3}' ;}
+kfunc() { typeset -F | grep 'k-' | awk '\{print $3\}' ; }
+

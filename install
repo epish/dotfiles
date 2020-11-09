@@ -5,7 +5,7 @@ BACKUP_DIR=${1:-$HOME}/.dot_bk
 
 echo "Old .dotfiles moved to $BACKUP_DIR"
 rm -rfv $BACKUP_DIR; mkdir -p $BACKUP_DIR
-for i in .bash .bash_logout .bashrc bin completion .gitconfig .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config .git_template .config/powerline
+for i in .bash .bash_logout .bashrc bin completion .gitconfig .tmux.conf .tmux-powerlinerc .screenrc .inputrc .ssh/config .git_template powerline iterm2
 do
 	mv -v $INSTALLDIR/$i $BACKUP_DIR/
 	ln -sv -f $PWD/$i $INSTALLDIR/$i;

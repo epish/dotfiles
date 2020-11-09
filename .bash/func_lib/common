@@ -15,6 +15,10 @@ function cdl() {
 	'ls' -Ahlrtp --color=always
 }
 
+function b64d() {
+	'echo' $1 | base64 -D
+}
+
 function mkcd()
 {
 	'mkdir' $*

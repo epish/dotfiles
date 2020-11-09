@@ -26,6 +26,6 @@
 [branch "release"]
     mergeoptions = --no-ff
 [push]
-	default = simple
+	default = current
 [init]
 	templatedir = ~/.git_template
