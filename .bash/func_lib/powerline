@@ -13,3 +13,13 @@ tfshow() {
         unset TF_PWL_ENABLED
     fi
 }
+
+awsshow() {
+    if [[ -z $AWS_PWL_ENABLED ]]; then
+        echo "yes"
+        export AWS_PWL_ENABLED="YES"
+    else
+        unset AWS_PWL_ENABLED
+        echo "no"
+    fi
+}

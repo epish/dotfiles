@@ -8,7 +8,7 @@ _complete_ssh_hosts ()
                         grep -v ^# | \
                         uniq | \
                         grep -v "\[" ;
-                cat ~/.ssh/config | \
+                cat ~/.ssh/config ~/.ssh/config.d/* | \
                         grep "^Host " | \
                         awk '{print $2}'
                 `

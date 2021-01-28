@@ -45,6 +45,7 @@ if [ -f ${HOME}/.aws/config.sh ]; then
 fi
 
 
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoredups:erasedups
@@ -53,8 +54,8 @@ HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTSIZE=100000
+HISTFILESIZE=200000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -97,11 +98,11 @@ export PATH="$PATH:${HOME}/.composer/vendor/bin/"
 #export PATH="/usr/local/opt/terraform@0.13/bin:$PATH"
 
 
-
 function _update_ps1() {
   local __ERRCODE=$?
   export PWL_PARAMS=" -colorize-hostname -shorten-gke-names"
   export PWL_MODULES="nix-shell,venv,ssh,cwd,perms,git,jobs,exit,root,vgo"
+  [ -n "${AWS_PWL_ENABLED}" ] && PWL_MODULES="$PWL_MODULES,aws"
   [ -n "${KUBE_PWL_ENABLED}" ] && PWL_MODULES="$PWL_MODULES,kube"
   [ -n "${TF_PWL_ENABLED}" ] && PWL_MODULES="$PWL_MODULES,terraform-workspace"
   PS1="$(/usr/local/bin/powerline-go $PWL_PARAMS -modules $PWL_MODULES -error $__ERRCODE -shell bash)"
@@ -110,6 +111,9 @@ function _update_ps1() {
 if [ "$TERM" != "linux" ] && [ -f "/usr/local/bin/powerline-go" ]; then
     PROMPT_COMMAND="_update_ps1;"
 fi
+
+eval "$(pyenv init -)"
+eval "$(direnv hook bash)"
 
 ### Init/reuse ssh-agent
 ssh-add -l &>/dev/null
@@ -123,7 +127,9 @@ if [ "$?" != 0 ]; then
     (umask 066; ssh-agent > ~/.ssh-agent)
     eval "$(<~/.ssh-agent)" >/dev/null
     [[ -r $HOME/.ssh/id_rsa ]] && ssh-add $HOME/.ssh/id_rsa
+    [[ -r $HOME/.ssh/id_rsa_ipsip ]] && ssh-add $HOME/.ssh/id_rsa_ipsip
   fi
 fi
+
 export LS_COLORS=no=00;#;normal:fi=00;#;file:di=01;94;#;directory:ln=01;36;#;link:pi=40;33;#;pipe:so=00;35;#:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=01;32;#;executable:*.cmd=00;32:*.exe=00;32:*.gz=44:*.bz2=44:*.bz=44:*.tz=44:*.rpm=44:*.deb=31:*.rar=44:*.zip=44:*.iso=44:*.cpio=00;31:*.c=33:*.h=33:*.sh=33:*.t=33:*.pm=33:*.pl=33:*.cgi=33:*.pod=33:*.PL=33:*.js=33:*.php=33:*.off=90;9:*.bak=90;9:*.old=90;9:*.swp=90;9:*.swo=90;9:*.htm=94:*.html=94:*.txt=94:*.text=94:*.css=94:*.avi=96:*.wmv=96:*.mpeg=96:*.mpg=96:*.mov=96:*.AVI=96:*.WMV=96:*.mkv=96:*.mp3=35:*.flac=35:*.wav=35:*.aac=35:*.jpg=96:*.jpeg=96:*.png=96:*.xcf=96:*.JPG=96:*.gif=96:*.svg=96:*.eps=00;96:*.pdf=00;96:*.PDF=00;96:*.ps=00;96:*.ai=00;91;#;adobe;ill:*.doc=00;91;#;msword;shit:*.csv=95:*.dsv=95:*.db=95:*.sql=95:*.meta=95:*.xml=95:*.yaml=95:*.yml=95:*.conf=95:
 

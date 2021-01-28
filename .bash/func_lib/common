@@ -35,7 +35,7 @@ function rename_all()
 {
     regex=$1
     replace=$2
-    find . -name "*$regex*" | sed -e "p;s/$regex/$replace/" | xargs -n2 mv
+    find . -name "*$regex*" | sed -e "p;s/$regex/$replace/" | gxargs -n2 echo mv
 }
 
 colors() {
