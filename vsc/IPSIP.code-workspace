@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../../ipsip/internal"
+		},
+		{
+			"path": "../../sbisecuritysolutions/recos_terraform"
+		},
+		{
+			"path": "../../sbisecuritysolutions/remit-urhub"
+		},
+		{
+			"path": "../../ipsip/bmc"
+		},
+		{
+			"path": "../../ipsip/psa"
+		},
+		{
+			"path": "../../ipsip/terraform_modules"
+		},
+		{
+			"path": "../../playground/ansible-local-sshd"
+		}
+	]
+}

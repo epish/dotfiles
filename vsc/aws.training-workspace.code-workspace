@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "../../aws-training/full-stack-dev"
+		},
+		{
+			"path": "../../aws-training/lambdaCreateThumbnail"
+		}
+	]
+}
